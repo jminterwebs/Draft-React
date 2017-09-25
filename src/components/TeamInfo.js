@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 
 
+
 class TeamInfo extends Component {
   constructor(props){
     super(props)
@@ -23,13 +24,13 @@ class TeamInfo extends Component {
 
   render(){
   return (
-    <div>
+    <div className='teamMembers'>
       {this.props.teamMembers.filter((player)=>{
         if(this.props.team_id != null){
           return player.team_id == this.props.team_id
         }
       }).map((player)=> {
-        return( <h3>{player.first_name}</h3>)
+        return( <li className={'playerMember ' + player.position} >{player.first_name} {player.last_name} </li>)
       })}
     </div>
   )}
