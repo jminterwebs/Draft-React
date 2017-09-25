@@ -18,12 +18,13 @@ export default function playerReducer(state={loading: false, players:[]}, action
 
     state = update(state, {
         players: {
-          [action.payload.id]: {
+          [action.payload.player.id-1]: {
             team_id: {$set: action.payload.team_id}
           }
         }
       }
     )
+    console.log(action.payload)
     return state
     default:
       return state;
