@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import DraftPlayer from './DraftPlayer.js'
 import PlayerInfo from './PlayerInfo'
 import TeamInfo from './TeamInfo'
+import DraftedPlayers from './DraftedPlayers'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/fetchPlayers.js'
@@ -20,24 +21,27 @@ import * as actions from '../actions/fetchPlayers.js'
 
   render(){
     return (
-      <div className="draftInfoWrapper">
-        <div className="availablePlayersList">
-          {this.props.availablePlayers
-            .filter((player) =>{
-              return player.team_id == null
-            }).map((player) => {
-              return(
-                <DraftPlayer player={player}/>
-              )
-            })
-          }
+      <div>
+        <div className="draftInfoWrapper">
+          <div className="availablePlayersList">
+            {this.props.availablePlayers
+              .filter((player) =>{
+                return player.team_id == null
+              }).map((player) => {
+                return(
+                  <DraftPlayer player={player}/>
+                )
+              })
+            }
+          </div>
+          <div className= "selectedPlayerInfo">
+            <PlayerInfo/>
+          </div>
+          <div className= "teamPlayerInfo">
+            <TeamInfo />
+          </div>
         </div>
-        <div className= "selectedPlayerInfo">
-          <PlayerInfo/>
-        </div>
-        <div className= "teamPlayerInfo">
-          <TeamInfo />
-        </div>
+        <DraftedPlayers/>
       </div>
     )
   }
