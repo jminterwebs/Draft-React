@@ -79,8 +79,14 @@ table {
 	display: flex;
 }
 
+.teamsWrapper{
+	display: flex;
+	background: teal;
+}
 
-
+.teamMembers{
+	flex: 1
+}
 .availablePlayersList{
   width: 20%;
   height: 200px;
