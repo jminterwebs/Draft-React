@@ -3,6 +3,7 @@ import AvailablePlayers from './components/AvailablePlayers'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from './actions/fetchPlayers.js'
+import DraftedPlayers from './components/DraftedPlayers'
 
 import './App.css';
 
@@ -20,6 +21,7 @@ class App extends Component {
     return (
       <div className="App">
        <AvailablePlayers availablePlayers={this.props.availablePlayers}/>
+       <DraftedPlayers/>
       </div>
     );
   }
