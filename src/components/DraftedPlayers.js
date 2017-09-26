@@ -2,24 +2,24 @@ import React, {Component} from 'react'
 import TeamInfo from './TeamInfo'
 
 
-class DraftedPlayers extends Component {
+const DraftedPlayers = () => {
 
 
 
-render(){
+
 
   return(
     <div className='teamsWrapper'>
-        <TeamInfo className='teamMembers' team_id={1}/>
-        <TeamInfo className='teamMembers' team_id={2}/>
-        <TeamInfo className='teamMembers' team_id={3}/>
-        <TeamInfo className='teamMembers' team_id={4}/>
-        <TeamInfo className='teamMembers' team_id={5}/>
-        <TeamInfo className='teamMembers' team_id={6}/>
-        <TeamInfo className='teamMembers' team_id={7}/>
-        <TeamInfo className='teamMembers' team_id={8}/>
-        <TeamInfo className='teamMembers' team_id={9}/>
-        <TeamInfo className='teamMembers' team_id={10}/>
+        <TeamInfo team_id={1}/>
+        <TeamInfo team_id={2}/>
+        <TeamInfo team_id={3}/>
+        <TeamInfo team_id={4}/>
+        <TeamInfo team_id={5}/>
+        <TeamInfo team_id={6}/>
+        <TeamInfo team_id={7}/>
+        <TeamInfo team_id={8}/>
+        <TeamInfo team_id={9}/>
+        <TeamInfo team_id={10}/>
 
     </div>
 
@@ -27,7 +27,7 @@ render(){
   )
 }
 
-}
+
 
 
 
