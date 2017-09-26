@@ -100,15 +100,16 @@ table {
 	padding: 5px;
 	list-style: none;
 	text-align: left;
-	margin: 3px
+	margin: 3px;
+	height: 50px;
+	
 
 
 }
 .availablePlayersList{
-  width: 20%;
   height: 200px;
   overflow: scroll;
-	flex: 0 0 25%;
+	flex: 10% 0 25%;
 
 }
 
@@ -116,10 +117,10 @@ table {
   list-style-type: none;
   padding: 4px;
   margin: 1px;
-  background-color: red;
-
-
-
+  font-size: 15pt;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
 }
 
 .selectedPlayerInfo{
@@ -132,9 +133,50 @@ table {
 }
 
 .selectedPlayerInfo{
-	font-size: 1.5em;
+
 }
 
+/*** PLAYER INFO STYLES ***/
+.playerInfoContainer{
+	display: flex;
+
+}
+.playerInfo{
+	flex: 1;
+	text-align: left;
+	padding-left: 2%;
+}
+.playerInfoName{
+	height: 40px;
+	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	font-size: 28pt;
+}
+
+.playerInfoPosition{
+	font-size: 24pt;
+}
+.playerInfoDraftButton{
+	background-color: green;
+	height: 200px;
+	line-height: 200px;
+	flex: 1;
+}
+
+.playerInfoRank{
+	font-size: 24pt;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.playerInfoProjectedPoints{
+	font-size: 24pt;
+
+
+}
+
+/****************************/
 .teamPlayerInfo{
 	flex: 1;
 	background-color: yellow;

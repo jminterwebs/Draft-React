@@ -17,12 +17,15 @@ class  PlayerInfo extends Component {
 
   render(){
     return(
-    <div>
-      <h3>Name: {this.props.selectedPlayer.first_name} {this.props.selectedPlayer.last_name}</h3>
-      <h2>Position: {this.props.selectedPlayer.position} Rank: {this.props.selectedPlayer.rank}</h2>
-      <h2>Projected Points: {this.props.selectedPlayer.projected_points}</h2>
+    <div className="playerInfoContainer">
+      <div className="playerInfo">
+        <h3 className="playerInfoName">Name: {this.props.selectedPlayer.first_name} {this.props.selectedPlayer.last_name}</h3>
+        <h2 className="playerInfoPosition">Position: {this.props.selectedPlayer.position}</h2>
+        <h2 className="playerInfoRank">  Rank: {this.props.selectedPlayer.rank}</h2>
+        <h2 className="playerInfoProjectedPoints">Projected Points: {this.props.selectedPlayer.projected_points}</h2>
+      </div>
 
-      <div onClick={()=>this.handleOnClick()}><h3>DRAFT PLAYER </h3></div>
+      <div className="playerInfoDraftButton" onClick={()=>this.handleOnClick()}><h3>DRAFT PLAYER </h3></div>
     </div>
   )
 }

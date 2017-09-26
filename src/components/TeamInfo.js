@@ -30,7 +30,7 @@ class TeamInfo extends Component {
           return player.team_id == this.props.team_id
         }
       }).map((player)=> {
-        return( <li className={'playerMember ' + player.position} >{player.first_name} {player.last_name} </li>)
+        return( <li className={'playerMember ' + player.position} ><h2>{player.first_name}</h2><h2> {player.last_name}</h2> </li>)
       })}
     </div>
   )}
