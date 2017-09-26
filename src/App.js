@@ -8,20 +8,30 @@ import './App.css';
 
 class App extends Component {
 
-
+  componentWillMount(){
+     if(!this.props.players){
+      this.props.actions.fetchPlayers()
+   }
+  }
 
 
 
   render() {
     return (
       <div className="App">
-       <AvailablePlayers/>
+       <AvailablePlayers availablePlayers={this.props.availablePlayers}/>
       </div>
     );
   }
 }
 
 
+function mapStateToProps(state) {
+  return { availablePlayers: state.players.players}
+}
 
+function mapDispatchToProps(dispatch){
+    return {actions: bindActionCreators(actions, dispatch)}
+}
 
-export default App
+export default connect(mapStateToProps, mapDispatchToProps)(App)
