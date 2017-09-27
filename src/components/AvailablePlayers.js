@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import DraftPlayer from './DraftPlayer.js'
 import PlayerInfo from './PlayerInfo'
-import TeamInfo from './TeamInfo'
+import TeamDetails from './TeamDetails'
 
 
 
@@ -28,7 +28,7 @@ import TeamInfo from './TeamInfo'
             <PlayerInfo/>
           </div>
           <div className= "teamPlayerInfo">
-            <TeamInfo />
+            <TeamDetails />
           </div>
         </div>
 
