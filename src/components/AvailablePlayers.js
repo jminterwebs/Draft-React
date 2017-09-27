@@ -28,7 +28,9 @@ import TeamDetails from './TeamDetails'
             <PlayerInfo/>
           </div>
           <div className= "teamPlayerInfo">
-            <TeamDetails />
+
+
+            <TeamDetails/>
           </div>
         </div>
 
