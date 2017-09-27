@@ -6,11 +6,7 @@ import { connect } from 'react-redux'
 
 
 class TeamInfo extends Component {
-  constructor(props){
-    super(props)
-
-    this.handleOnClick = this.handleOnClick.bind(this)
-  }
+  
 
  componentWillMount(){
     let team = this.props.teamMembers.filter((player)=> {
@@ -18,16 +14,13 @@ class TeamInfo extends Component {
     })
     return team
   }
-  handleOnClick(){
-    console.log(this.props)
-  }
 
   render(){
   return (
 
 
       <div className='teamMembers'>
-        <input className="teamBox" type="text"></input>
+        <input className="teamBox" placeholder="Team Name" type="text"></input>
         {this.props.teamMembers.filter((player)=>{
           if(this.props.team_id != null){
             return player.team_id == this.props.team_id
