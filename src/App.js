@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-       <AvailablePlayers availablePlayers={this.props.availablePlayers}/>
+       <AvailablePlayers availablePlayers={this.props.availablePlayers} team_id={this.props.team_id}/>
        <DraftedPlayers/>
       </div>
     );
@@ -29,7 +29,8 @@ class App extends Component {
 
 
 function mapStateToProps(state) {
-  return { availablePlayers: state.players.players}
+  return { availablePlayers: state.players.players,
+           team_id: state.team_id}
 }
 
 function mapDispatchToProps(dispatch){
