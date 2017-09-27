@@ -7,18 +7,14 @@ import TeamInfo from './TeamInfo'
 
 
 
-  class AvailablePlayers extends Component {
+  const AvailablePlayers =  (props) => {
 
 
-
-
-
-  render(){
     return (
       <div>
         <div className="draftInfoWrapper">
           <div className="availablePlayersList">
-            {this.props.availablePlayers
+            {props.availablePlayers
               .filter((player) =>{
                 return player.team_id == null
               }).map((player) => {
@@ -38,8 +34,9 @@ import TeamInfo from './TeamInfo'
 
       </div>
     )
+
   }
-}
+
 
 
 
