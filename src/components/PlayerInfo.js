@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PlayerDetails from './PlayerDetails'
+import DraftPlayerButton from './DraftPlayerButton'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/draftPlayer.js'
@@ -22,7 +23,7 @@ class  PlayerInfo extends Component {
 
       <div className="playerInfoContainer">
       <PlayerDetails selectedPlayer={this.props.selectedPlayer}/>
-      <div className="playerInfoDraftButton" onClick={()=>this.handleOnClick()}><h3>DRAFT PLAYER </h3></div>
+      <DraftPlayerButton draftPlayer={()=>this.handleOnClick()}/>
     </div>
   )
 }
