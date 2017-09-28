@@ -12,6 +12,8 @@ class DraftedPlayers extends Component{
 render(){
     return(
       <div className='teamsWrapper'>
+
+          
           <TeamInfo team_id={1} teamMembers = {this.props.teamMembers}/>
           <TeamInfo team_id={2} teamMembers = {this.props.teamMembers}/>
           <TeamInfo team_id={3} teamMembers = {this.props.teamMembers}/>
@@ -29,8 +31,6 @@ render(){
     )
     }
 }
-
-
 
 function mapStateToProps(state){
   return {teamMembers: state.players.players}
