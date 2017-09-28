@@ -15,7 +15,6 @@ export const draftPlayer = (player) => {
           }
       }
 
-
     )
         .then(responseJson => {dispatch({type: 'DRAFT_PLAYER', payload: {player, team_id}})
       }).then(function(){
