@@ -12,7 +12,7 @@ class DraftPlayer extends Component {
 
   render(){
   return (
-    <li className={this.props.player.position } onClick={this.selectPlayer}  key= {this.props.player.player_id} >
+    <li className={this.props.player.position } onClick={this.selectPlayer}  key= {this.props.player.id} >
       <p >{this.props.player.first_name} {this.props.player.last_name}</p>
 
     </li>

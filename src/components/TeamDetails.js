@@ -19,7 +19,7 @@ class TeamDetails extends Component {
     return(
 
       <div>
-        <h3 onClick={this.handleOnClick}>CLick me</h3>
+        <h3 onClick={this.handleOnClick}>{this.props.team_id}</h3>
     </div>
   )
 }
