@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import AvailablePlayers from './components/AvailablePlayers'
 import { connect } from 'react-redux'
+import Leagues from './components/Leagues'
 import { bindActionCreators } from 'redux'
 import * as actions from './actions/fetchPlayers.js'
 import DraftedPlayers from './components/DraftedPlayers'
-
+import Routes from './routes'
 import './App.css';
 
 class App extends Component {
@@ -19,9 +20,11 @@ class App extends Component {
 
   render() {
     return (
+
       <div className="App">
-       <AvailablePlayers availablePlayers={this.props.availablePlayers} team_id={this.props.team_id}/>
-       <DraftedPlayers/>
+        <Routes/>
+        {/* <AvailablePlayers availablePlayers={this.props.availablePlayers} team_id={this.props.team_id}/>
+       <DraftedPlayers/> */}
       </div>
     );
   }
