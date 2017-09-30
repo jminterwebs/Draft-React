@@ -8,6 +8,6 @@ export function fetchPlayers() {
       .then(responseJson => {
         dispatch({type: 'FETCH_PLAYERS', payload: responseJson})
     })
-    // return cats;
+    
   }
 }
