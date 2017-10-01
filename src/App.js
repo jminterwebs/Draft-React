@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import AvailablePlayers from './components/AvailablePlayers'
 import { connect } from 'react-redux'
-import Leagues from './components/Leagues'
 import { bindActionCreators } from 'redux'
 import * as fetchLeagues from './actions/fetchLeagues.js'
 import DraftedPlayers from './components/DraftedPlayers'
