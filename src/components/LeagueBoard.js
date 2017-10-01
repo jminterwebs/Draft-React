@@ -1,16 +1,34 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as fetchPlayers from '../actions/fetchPlayers.js'
 
-const LeagueBoard = (props) => {
+
+class LeagueBoard extends Component{
 
 
+componentWillMount() {
+  if(this.props.draftBoard){
+    this.props.actions.fetchPlayers(this.props.match.params.id)
+  }
+}
+
+render(){
 return (
   <div> This is a league Draft Board Stub
-    {props.match.params.id}
+    {this.props.match.params.id}
   </div>
-
 )
+}
 
 }
 
+function mapStateToProps(state){
+  return {draftBoard: state
+  }
+}
+function mapDispatchToProps(dispatch){
+  return{actions: bindActionCreators(fetchPlayers, dispatch)}
+}
 
-export default LeagueBoard
+export default connect(mapStateToProps,mapDispatchToProps)(LeagueBoard)
