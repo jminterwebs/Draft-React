@@ -12,21 +12,19 @@ class Leagues extends Component {
     }
   }
 
-  handleOnClick() {
-    console.log(this)
-  }
+  
 
   render() {
     return (
       <div>
-        <h1 onClick={this.handleOnClick()}>{this.props.leagues.length}</h1>
+        <h1>{this.props.leagues.length}</h1>
         {this.props.leagues.map((league)=> {
           return (
             <li><Link to={`/leagues/${league.id}`}>{league.name}</Link></li>
           )
         })}
         <div>
-          <li><Link to={'/leagues/new'}>Create new League</Link>   </li>
+          <li><Link to={'/leagues/new'}>Create new League</Link></li>
         </div>
       </div>
 
