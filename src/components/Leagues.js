@@ -1,6 +1,7 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 import * as fetchLeagues from '../actions/fetchLeagues.js'
 
 class Leagues extends Component {
@@ -21,11 +22,14 @@ class Leagues extends Component {
         <h1 onClick={this.handleOnClick()}>{this.props.leagues.length}</h1>
         {this.props.leagues.map((league)=> {
           return (
-            <h3>{league.name}</h3>
-
+            <li><Link to={`/leagues/${league.id}`}>{league.name}</Link></li>
           )
         })}
+        <div>
+          <li><Link to={'/leagues/new'}>Create new League</Link>   </li>
+        </div>
       </div>
+
     )
   }
 }
