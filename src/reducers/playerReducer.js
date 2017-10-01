@@ -5,7 +5,7 @@ export default function playerReducer(state={loading: false, players:[], team_id
     case 'LOADING_PLAYERS':
       return Object.assign({}, state, {loading:true})
     case 'FETCH_PLAYERS':
-      return {loading:false, players: action.payload, team_id: action.payload.team_id}
+      return {loading:false, players: action.payload.players, team_id: action.payload.team_id}
     case 'DRAFT_PLAYER':
 
         state = update(state, {
