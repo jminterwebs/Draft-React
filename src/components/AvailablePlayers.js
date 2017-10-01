@@ -13,8 +13,10 @@ import TeamDetails from './TeamDetails'
     return (
       <div>
         <div className="draftInfoWrapper">
+
           <div className="availablePlayersList">
-            {props.availablePlayers
+
+            {props.players.players
               .filter((player) =>{
                 return player.team_id == null
               }).map((player) => {
