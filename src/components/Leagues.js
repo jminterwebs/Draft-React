@@ -1,24 +1,14 @@
 import React, { Component} from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
-import * as fetchLeagues from '../actions/fetchLeagues.js'
 
-class Leagues extends Component {
 
-  componentWillMount(){
-    if(!this.props.leahues){
-      this.props.actions.fetchLeagues()
-    }
-  }
+const Leagues = (props) => {
 
-  
 
-  render() {
     return (
       <div>
-        <h1>{this.props.leagues.length}</h1>
-        {this.props.leagues.map((league)=> {
+        <h1>{props.leagues.length}</h1>
+        {props.leagues.map((league)=> {
           return (
             <li><Link to={`/leagues/${league.id}`}>{league.name}</Link></li>
           )
@@ -30,14 +20,7 @@ class Leagues extends Component {
 
     )
   }
-}
 
-function mapStateToProps(state) {
-  return { leagues: state.leagues.leagues }
-}
 
-function mapDispatchToProps(dispatch){
-    return {actions: bindActionCreators(fetchLeagues, dispatch)}
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Leagues)
+export default Leagues
