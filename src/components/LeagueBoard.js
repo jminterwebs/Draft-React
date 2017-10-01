@@ -3,28 +3,30 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as fetchPlayers from '../actions/fetchPlayers.js'
 
+import AvailablePlayers from './AvailablePlayers'
+
 
 class LeagueBoard extends Component{
 
 
 componentWillMount() {
-  if(this.props.draftBoard){
+  if(this.props.players){
     this.props.actions.fetchPlayers(this.props.match.params.id)
   }
 }
 
 render(){
 return (
-  <div> This is a league Draft Board Stub
-    {this.props.match.params.id}
-  </div>
+<div>
+  <AvailablePlayers leagueBoard={this.props} players={this.props.players}/>
+</div>
 )
 }
 
 }
 
 function mapStateToProps(state){
-  return {draftBoard: state
+  return {players: state.players
   }
 }
 function mapDispatchToProps(dispatch){
