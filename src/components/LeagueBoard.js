@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import * as fetchPlayers from '../actions/fetchPlayers.js'
 
 import AvailablePlayers from './AvailablePlayers'
+import DraftedPlayers from './DraftedPlayers'
 
 
 class LeagueBoard extends Component{
@@ -19,6 +20,7 @@ render(){
 return (
 <div>
   <AvailablePlayers leagueBoard={this.props} players={this.props.players}/>
+  <DraftedPlayers teams={this.props.players.teams}/>
 </div>
 )
 }
@@ -26,7 +28,8 @@ return (
 }
 
 function mapStateToProps(state){
-  return {players: state.players
+  return {players: state.players,
+          teams: state.teams
   }
 }
 function mapDispatchToProps(dispatch){
