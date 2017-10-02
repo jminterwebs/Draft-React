@@ -1,11 +1,11 @@
 import update from 'immutability-helper'
 
-export default function playerReducer(state={loading: false, players:[], team_id: 1}, action) {
+export default function playerReducer(state={loading: false, players:[], teams: [] }, action) {
   switch ( action.type ) {
     case 'LOADING_PLAYERS':
       return Object.assign({}, state, {loading:true})
     case 'FETCH_PLAYERS':
-      return {loading:false, players: action.payload.players, team_id: action.payload.team_id}
+      return {loading:false, players: action.payload.players, teams: action.payload.teams }
     case 'DRAFT_PLAYER':
 
         state = update(state, {
