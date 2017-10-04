@@ -16,7 +16,7 @@ import TeamDetails from './TeamDetails'
 
           <div className="availablePlayersList">
 
-            {props.players.players
+            {props.players
               .filter((player) =>{
                 return player.team_id == null
               }).map((player) => {
@@ -27,7 +27,7 @@ import TeamDetails from './TeamDetails'
             }
           </div>
           <div className= "selectedPlayerInfo">
-            <PlayerInfo/>
+            <PlayerInfo leagueInfo={props.leagueInfo}/>
           </div>
           <div className= "teamPlayerInfo">
 

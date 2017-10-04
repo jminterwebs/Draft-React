@@ -29,7 +29,8 @@ class  PlayerInfo extends Component {
 }
 }
 function mapStateToProps(state){
-  return {selectedPlayer: state.selectedPlayer
+  return {selectedPlayer: state.selectedPlayer,
+
   }
 }
 

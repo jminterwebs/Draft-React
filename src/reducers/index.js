@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux'
-import playerReducer from './playerReducer'
-import playerInfoReducer from './playerInfoReducer'
 import leagueReducer from './leagueReducer'
+import playerInfoReducer from './playerInfoReducer'
+import leaguesReducer from './leaguesReducer'
 
 
 const rootReducer = combineReducers({
-  players: playerReducer,
+  league: leagueReducer,
   selectedPlayer: playerInfoReducer,
-  leagues: leagueReducer
+  leagues: leaguesReducer
 })
 
 

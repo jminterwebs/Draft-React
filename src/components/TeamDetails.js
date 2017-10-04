@@ -19,14 +19,13 @@ class TeamDetails extends Component {
     return(
 
       <div>
-        <h3 onClick={this.handleOnClick}>{this.props.team_id}</h3>
+
     </div>
   )
 }
 }
 function mapStateToProps(state){
-  return {team_id: state.players.team_id,
-          teamMembers: state.players
+  return {teamMembers: state.players
 
   }
 }
