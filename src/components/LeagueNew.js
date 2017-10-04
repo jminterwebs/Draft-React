@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actions from '../actions/addTeam.js'
+import * as actions from '../actions/addLeague.js'
 
 class LeagueNew extends Component {
   constructor(props){
@@ -10,34 +10,37 @@ class LeagueNew extends Component {
     this.state = {
       league: {
           name: "",
-          teams: []
+           teams_attributes: []
       }
     }
     this.handleLeagueChange = this.handleLeagueChange.bind(this)
     this.handleTeamChange = this.handleTeamChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleLeagueSubmit = this.handleLeagueSubmit.bind(this)
   }
 
   handleLeagueChange(event) {
    this.setState({league: {
                     name: event.target.value,
-                    teams: []}
+                     teams_attributes: this.state.league. teams_attributes
+                    }
                   });
-   console.log(this.state)
+                  console.log(this.state.league)
  }
 
- handleTeamChange= (teamIndex) => (event)=> {
-   this.state.league.teams.splice(teamIndex,1, event.target.value)
-   var newArray = this.state.league.teams
+ handleTeamChange = (teamIndex) => (event)=> {
+   this.state.league. teams_attributes.splice(teamIndex,1, {name: event.target.value})
+   var newArray = this.state.league. teams_attributes
    this.setState({league: {
-                  teams: newArray
+                  name: this.state.league.name,
+                   teams_attributes: newArray
    }})
-   console.log(this.state.league.teams)
+
  }
 
-  handleSubmit(event){
+  handleLeagueSubmit(event){
     event.preventDefault();
-    console.log(this.state)
+    this.props.createLeague(this.state.league)
+
   }
 
 render(){
@@ -92,4 +95,12 @@ return (
 
 }
 
-export default LeagueNew
+function mapStateToProps(state){
+  return {league: state.league}
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(actions, dispatch)
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(LeagueNew)
