@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/addLeague.js'
+import { Redirect } from 'react-router'
 
 class LeagueNew extends Component {
   constructor(props){
@@ -10,8 +11,9 @@ class LeagueNew extends Component {
     this.state = {
       league: {
           name: "",
-           teams_attributes: []
-      }
+          teams_attributes: [],
+      },
+      fireRedirect: false
     }
     this.handleLeagueChange = this.handleLeagueChange.bind(this)
     this.handleTeamChange = this.handleTeamChange.bind(this)
@@ -32,7 +34,7 @@ class LeagueNew extends Component {
    var newArray = this.state.league. teams_attributes
    this.setState({league: {
                   name: this.state.league.name,
-                   teams_attributes: newArray
+                  teams_attributes: newArray
    }})
 
  }
@@ -40,11 +42,19 @@ class LeagueNew extends Component {
   handleLeagueSubmit(event){
     event.preventDefault();
     this.props.createLeague(this.state.league)
-    this.context.router='/'
+    this.setState({league: {
+                   name: this.state.league.name,
+                   teams_attributes: this.state.league.teams_attributes
+                 },
+                  fireRedirect: true
+    })
+
 
   }
 
 render(){
+  const { from } = this.props.location.state || '/'
+    const { fireRedirect } = this.state
 return (
   <div>
     <form onSubmit={event => this.handleLeagueSubmit(event)}>
@@ -90,6 +100,11 @@ return (
       <input type="submit"/>
     </form>
 
+    {fireRedirect && (
+          <Redirect to={from || `/leagues/${this.props.leagues.length - 1}`}/>
+        )}
+
+
   </div>
 )
 }
@@ -97,7 +112,8 @@ return (
 }
 
 function mapStateToProps(state){
-  return {league: state.league}
+  return {league: state.league,
+          leagues: state.leagues.leagues}
 }
 
 function mapDispatchToProps(dispatch){
