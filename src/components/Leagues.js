@@ -7,7 +7,7 @@ const Leagues = (props) => {
 
     return (
       <div>
-        <h1>{props.leagues.length}</h1>
+        
         {props.leagues.map((league)=> {
           return (
             <li><Link to={`/leagues/${league.id}`}>{league.name}</Link></li>

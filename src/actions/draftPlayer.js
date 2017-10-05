@@ -9,15 +9,24 @@ export const draftPlayer = (selectedPlayer, leagueInfo) => {
 
   if (leagueInfo.draft_round %2 == 1){
       drafting_team++
-      console.log('fowards ' + drafting_team)
+      if (drafting_team == 11){
+        drafting_team = 1
+      }
+
   } else if (leagueInfo.draft_round %2 == 0) {
-      drafting_team = 10 - drafting_team || 10
-      console.log("backwards " + drafting_team)
+      drafting_team = 10 - drafting_team
+      if (drafting_team == 0){
+        drafting_team = 10
+
+      }
+
+
   }
 
       leagueInfo.draft_spot ++
       if (leagueInfo.draft_spot % 10 == 0) {
         leagueInfo.draft_round ++
+
       }
 
 return function(dispatch){
@@ -35,7 +44,8 @@ return function(dispatch){
       }
 
     )
-        .then(responseJson => {dispatch({type: 'DRAFT_PLAYER', payload: {leagueInfo}})
+        .then(responseJson => {dispatch({type: 'DRAFT_PLAYER', payload: {leagueInfo, selectedPlayer, drafting_team}})
       })
+
   }
 }}

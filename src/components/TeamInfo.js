@@ -1,41 +1,32 @@
 import React, {Component} from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as actions from '../actions/fetchTeams.js'
 
-
+import DraftedPlayerDetails from './DraftedPlayerDetails'
 
 
 
 class TeamInfo extends Component {
 
 
-  componentWillMount(){
-
-    if(this.props.team){
-      
-   this.props.actions.fetchTeam(this.props.teamInfo.id)
-  }
-  }
 
   render(){
+
     return (
       <div className='teamMembers'>
-        {this.props.teamInfo.name}
-        {this.props.teamInfo.id}
+
+        <h1 className= 'teamName'>{this.props.teamInfo.name}</h1>
+        {this.props.teamInfo.players.map((player)=> {
+          return (
+            <DraftedPlayerDetails player={player}/>
+          )
+
+         })}
+
       </div>
 
     )
   }
 }
 
-function mapStateToProps(state){
-  return{ team: state.team}
 
-}
 
-function mapDispatchToProps(dispatch){
-  return {actions: bindActionCreators(actions,dispatch)}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TeamInfo)
+export default TeamInfo

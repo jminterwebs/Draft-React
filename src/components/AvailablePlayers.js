@@ -1,4 +1,4 @@
-import React, { Component} from 'react';
+import React from 'react';
 import DraftPlayer from './DraftPlayer.js'
 import PlayerInfo from './PlayerInfo'
 import TeamDetails from './TeamDetails'
@@ -21,7 +21,7 @@ import TeamDetails from './TeamDetails'
                 return player.team_id == null
               }).map((player) => {
                 return(
-                  <DraftPlayer player={player}/>
+                  <DraftPlayer key={player.unique_player_id } player={player}/>
                 )
               })
             }
@@ -29,7 +29,7 @@ import TeamDetails from './TeamDetails'
           <div className= "selectedPlayerInfo">
             <PlayerInfo leagueInfo={props.leagueInfo}/>
           </div>
-          
+
         </div>
 
       </div>

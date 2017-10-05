@@ -20,8 +20,8 @@ class LeagueNew extends Component {
 
   handleLeagueChange(event) {
    this.setState({league: {
-                    name: event.target.value,
-                     teams_attributes: this.state.league. teams_attributes
+                  name: event.target.value,
+                  teams_attributes: this.state.league. teams_attributes
                     }
                   });
                   console.log(this.state.league)
@@ -40,6 +40,7 @@ class LeagueNew extends Component {
   handleLeagueSubmit(event){
     event.preventDefault();
     this.props.createLeague(this.state.league)
+    this.context.router='/'
 
   }
 

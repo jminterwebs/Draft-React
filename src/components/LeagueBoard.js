@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as fetchLeague from '../actions/fetchLeague.js'
+import * as fetchTeams from '../actions/fetchTeams.js'
+
 
 import AvailablePlayers from './AvailablePlayers'
 import DraftedPlayers from './DraftedPlayers'
@@ -12,16 +14,21 @@ class LeagueBoard extends Component{
 
 componentWillMount() {
   if(this.props.leagueInfo){
-    this.props.actions.fetchLeague(this.props.match.params.id)
+    this.props.fetchLeague.fetchLeague(this.props.match.params.id)
   }
-  
+  if(this.props.teams){
+    this.props.fetchTeams.fetchTeams(this.props.match.params.id)
+}
+
 }
 
 render(){
 return (
 <div>
-  <AvailablePlayers leagueInfo={this.props.leagueInfo.leagueInfo}     players={this.props.leagueInfo.players}/>
-  <DraftedPlayers teams={this.props.leagueInfo}/>
+  <AvailablePlayers leagueInfo={this.props.leagueInfo.leagueInfo}     players={this.props.players.players}/>
+
+
+  <DraftedPlayers teams={this.props.teams}/>
 </div>
 )
 }
@@ -29,12 +36,15 @@ return (
 }
 
 function mapStateToProps(state){
-  return {leagueInfo: state.league
+  return {leagueInfo: state.league,
+          teams: state.team,
+          players: state.league
 
   }
 }
 function mapDispatchToProps(dispatch){
-  return{actions: bindActionCreators(fetchLeague, dispatch)}
+  return{fetchLeague: bindActionCreators(fetchLeague, dispatch),
+          fetchTeams: bindActionCreators(fetchTeams, dispatch)}
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(LeagueBoard)
