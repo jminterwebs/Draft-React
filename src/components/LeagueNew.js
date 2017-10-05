@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/addLeague.js'
 import { Redirect } from 'react-router'
+import '../App.css';
 
 class LeagueNew extends Component {
   constructor(props){
@@ -56,44 +57,44 @@ render(){
   const { from } = this.props.location.state || '/'
     const { fireRedirect } = this.state
 return (
-  <div>
-    <form onSubmit={event => this.handleLeagueSubmit(event)}>
+  <div class="formWrapper">
+    <form  className="newLeagueForm" onSubmit={event => this.handleLeagueSubmit(event)}>
 
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleLeagueChange}
         type="text" placeholder="League Name"/>
 
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(0)}
         value={this.state.value}
         type="text" placeholder="Team One"/>
 
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(1)}
         type="text" placeholder="Team Two"/>
 
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(2)}
         type="text" placeholder="Team Three"/>
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(3)}
         type="text" placeholder="Team Four"/>
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(4)}
         type="text" placeholder="Team Five"/>
-      <input value={this.state.value}
+      <input className="teamBox" className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(5)}
         type="text" placeholder="Team Six"/>
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(6)}
         type="text" placeholder="Team Seven"/>
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(7)}
         type="text" placeholder="Team Eight"/>
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(8)}
         type="text" placeholder="Team Nine"/>
-      <input value={this.state.value}
+      <input className="teamBox" value={this.state.value}
         onChange={this.handleTeamChange(9)}
         type="text" placeholder="Team Ten"/>
 
@@ -101,7 +102,7 @@ return (
     </form>
 
     {fireRedirect && (
-          <Redirect to={from || `/leagues/${this.props.leagues.length - 1}`}/>
+          <Redirect to={from || `/leagues/${this.props.leagues.length}`}/>
         )}
 
 

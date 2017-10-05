@@ -23,11 +23,7 @@ export const draftPlayer = (selectedPlayer, leagueInfo) => {
 
   }
 
-      leagueInfo.draft_spot ++
-      if (leagueInfo.draft_spot % 10 == 0) {
-        leagueInfo.draft_round ++
 
-      }
 
 return function(dispatch){
 
@@ -45,6 +41,12 @@ return function(dispatch){
 
     )
         .then(responseJson => {dispatch({type: 'DRAFT_PLAYER', payload: {leagueInfo, selectedPlayer, drafting_team}})
+      }).then(function(){
+        leagueInfo.draft_spot ++
+        if (leagueInfo.draft_spot % 10 == 0) {
+          leagueInfo.draft_round ++
+
+        }
       })
 
   }
