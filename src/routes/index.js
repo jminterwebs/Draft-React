@@ -10,7 +10,7 @@ const Routes = (props) => (
   <BrowserRouter>
     <Switch>
 
-    <Route exact path='/leagues' render={() => <Leagues leagues={props.leagues}/> }/>
+    <Route exact path='/' render={() => <Leagues leagues={props.leagues}/> }/>
     <Route exact path='/leagues/new' component={LeagueNew}/>
     <Route path='/leagues/:id' component={LeagueBoard}/>
 
