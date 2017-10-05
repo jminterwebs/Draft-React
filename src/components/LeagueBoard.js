@@ -14,13 +14,14 @@ componentWillMount() {
   if(this.props.leagueInfo){
     this.props.actions.fetchLeague(this.props.match.params.id)
   }
+  
 }
 
 render(){
 return (
 <div>
   <AvailablePlayers leagueInfo={this.props.leagueInfo.leagueInfo}     players={this.props.leagueInfo.players}/>
-  <DraftedPlayers teams={this.props.leagueInfo.teams}/>
+  <DraftedPlayers teams={this.props.leagueInfo}/>
 </div>
 )
 }

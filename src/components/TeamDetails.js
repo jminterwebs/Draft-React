@@ -25,7 +25,7 @@ class TeamDetails extends Component {
 }
 }
 function mapStateToProps(state){
-  return {teamMembers: state.players
+  return {teamMembers: state
 
   }
 }
