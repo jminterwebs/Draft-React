@@ -10,6 +10,7 @@ export default function teamsInfoReducer( state= {loading: false, teamInfo: []},
     let id = action.payload.drafting_team-1
     console.log(action.payload)
     console.log(state)
+    debugger
     // state = update(state, {
     //   teamInfo: {
     //     id:{

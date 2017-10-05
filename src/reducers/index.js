@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   league: leagueReducer,
   selectedPlayer: playerInfoReducer,
   leagues: leaguesReducer,
-  team: teamsInfoReducer
+  teamInfo: teamsInfoReducer
 })
 
 

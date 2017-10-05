@@ -37,14 +37,14 @@ return (
 
 function mapStateToProps(state){
   return {leagueInfo: state.league,
-          teams: state.team,
+          teams: state.teamInfo,
           players: state.league
 
   }
 }
 function mapDispatchToProps(dispatch){
   return{fetchLeague: bindActionCreators(fetchLeague, dispatch),
-          fetchTeams: bindActionCreators(fetchTeams, dispatch)}
+         fetchTeams: bindActionCreators(fetchTeams, dispatch)}
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(LeagueBoard)
