@@ -29,11 +29,7 @@ import TeamDetails from './TeamDetails'
           <div className= "selectedPlayerInfo">
             <PlayerInfo leagueInfo={props.leagueInfo}/>
           </div>
-          <div className= "teamPlayerInfo">
-
-
-            <TeamDetails/>
-          </div>
+          
         </div>
 
       </div>
