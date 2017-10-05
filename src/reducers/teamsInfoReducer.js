@@ -7,18 +7,26 @@ export default function teamsInfoReducer( state= {loading: false, teamInfo: []},
     case 'FETCH_TEAMS':
     return {loading: false, teamInfo: action.payload}
     case 'DRAFT_PLAYER':
-    let id = action.payload.drafting_team-1
+    let team_id = action.payload.drafting_team-1
     console.log(action.payload)
     console.log(state)
-    debugger
-    // state = update(state, {
-    //   teamInfo: {
-    //     id:{
-    //       players: { $push: [action.payload.selectedPlayer]}
+
+    // state = update(state,{
+    //   teamInfo:{
+    //     team_id:{
+    //       players:{
+    //         $push: [action.payload.selectedPlayer]}
     //     }
     //   }
     // })
 
+    return update(state, { teamInfo: {
+      [team_id]: {
+        players: {
+          $push: [action.payload.selectedPlayer]
+        }
+      }
+    }})
 
 
     default:
