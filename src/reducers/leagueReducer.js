@@ -7,11 +7,13 @@ export default function leagueReducer(state={loading: false, players:[], teams: 
     case 'FETCH_LEAGUE':
       return {loading:false, players: action.payload.players, teams: action.payload.teams, leagueInfo: action.payload }
     case 'DRAFT_PLAYER':
-    action.payload.selectedPlayer.id
+
+
+      let index = state.players.findIndex(player => player.id == action.payload.selectedPlayer.id)
 
         state = update(state, {
           players: {
-            $splice: [[action.payload.selectedPlayer.id-1,1]]
+            $splice: [[index,1]]
           }
         })
 
