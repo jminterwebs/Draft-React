@@ -84,6 +84,11 @@ table {
 	background: aqua;
 }
 
+.teamWatchList{
+	flex: 1;
+	background-color: aqua;
+}
+
 .teamMembers{
 	flex: 1;
 	width: 8%;
