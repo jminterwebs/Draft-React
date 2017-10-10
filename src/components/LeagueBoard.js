@@ -25,7 +25,7 @@ componentWillMount() {
 render(){
 return (
 <div>
-  <AvailablePlayers leagueInfo={this.props.leagueInfo.leagueInfo}     players={this.props.players.players}/>
+  <AvailablePlayers leagueInfo={this.props.leagueInfo.leagueInfo}     players={this.props.players.players} currentTeam={this.props.teams}/>
 
 
   <DraftedPlayers teams={this.props.teams}/>
