@@ -3,27 +3,32 @@ import fetch from 'isomorphic-fetch';
 
 export const draftPlayer = (selectedPlayer, leagueInfo) => {
 
-  var  drafting_round = leagueInfo.draft_round % 2
-  var  drafting_team = (leagueInfo.draft_spot % 10 || 10)
+  var drafting_spot = leagueInfo.draft_spot
+
+  var draft_team;
+  var round = leagueInfo.draft_round
 
 
-  if (leagueInfo.draft_round %2 == 1){
-      drafting_team++
-      if (drafting_team == 11){
-        drafting_team = 1
-      }
+  if (drafting_spot % 10 == 0 && drafting_spot != 0){
+    draft_team = 10
 
-  } else if (leagueInfo.draft_round %2 == 0) {
-      drafting_team = 10 - drafting_team
-      if (drafting_team == 0){
-        drafting_team = 10
-
-      }
-
-
+  } else {
+  draft_team = drafting_spot % 10
   }
 
+  // if (round % 2 == 1 && drafting_spot >= 19){
+  //   draft_team = draft_team - 1
 
+  // }
+
+
+  if (round % 2 == 0 ){
+      draft_team = 11 - draft_team
+  }
+
+draft_team-- 
+  console.log(draft_team)
+  console.log(leagueInfo.draft_spot)
 
 return function(dispatch){
 
@@ -31,7 +36,7 @@ return function(dispatch){
     return fetch(`http://localhost:3001/leagues/${leagueInfo.id}`,{
           method: "PATCH",
           body: JSON.stringify({ player: selectedPlayer.id,
-                                 drafting_team: drafting_team
+                                 drafting_team: draft_team
                                 }),
           headers: {
             'Accept': 'application/json',
@@ -40,13 +45,13 @@ return function(dispatch){
       }
 
     )
-        .then(responseJson => {dispatch({type: 'DRAFT_PLAYER', payload: {leagueInfo, selectedPlayer, drafting_team}})
+        .then(responseJson => {dispatch({type: 'DRAFT_PLAYER', payload: {leagueInfo, selectedPlayer, draft_team}})
       }).then(function(){
-        leagueInfo.draft_spot ++
-        if (leagueInfo.draft_spot % 10 == 0) {
-          leagueInfo.draft_round ++
 
+        if (leagueInfo.draft_spot % 10 == 0 && leagueInfo.draft_spot != 0) {
+          leagueInfo.draft_round ++
         }
+        leagueInfo.draft_spot ++
       })
 
   }
