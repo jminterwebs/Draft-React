@@ -16,17 +16,11 @@ export const draftPlayer = (selectedPlayer, leagueInfo) => {
   draft_team = drafting_spot % 10
   }
 
-  // if (round % 2 == 1 && drafting_spot >= 19){
-  //   draft_team = draft_team - 1
-
-  // }
-
-
   if (round % 2 == 0 ){
       draft_team = 11 - draft_team
   }
 
-draft_team-- 
+draft_team--
   console.log(draft_team)
   console.log(leagueInfo.draft_spot)
 
