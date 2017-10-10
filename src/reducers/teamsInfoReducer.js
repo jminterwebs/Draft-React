@@ -7,9 +7,10 @@ export default function teamsInfoReducer( state= {loading: false, teamInfo: []},
     case 'FETCH_TEAMS':
     return {loading: false, teamInfo: action.payload}
     case 'DRAFT_PLAYER':
-    let team_id = action.payload.drafting_team-1
-    console.log(action.payload)
-    console.log(state)
+    let team_id = action.payload.draft_team
+    // console.log("Team ID " + team_id)
+    // console.log(action.payload)
+    // console.log(state)
 
     // state = update(state,{
     //   teamInfo:{
