@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
-import AvailablePlayers from './components/AvailablePlayers'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as actions from './actions/fetchPlayers.js'
-import DraftedPlayers from './components/DraftedPlayers'
-
+import * as fetchLeagues from './actions/fetchLeagues.js'
+import Routes from './routes/index'
 import './App.css';
 
 class App extends Component {
 
   componentWillMount(){
-     if(!this.props.players){
-      this.props.actions.fetchPlayers()
-   }
+    if(this.props.leagues){
+      this.props.actions.fetchLeagues()
+    }
   }
 
 
 
   render() {
     return (
+
       <div className="App">
-       <AvailablePlayers availablePlayers={this.props.availablePlayers} team_id={this.props.team_id}/>
-       <DraftedPlayers/>
+        <Routes leagues={this.props.leagues} />
+        {/* <AvailablePlayers availablePlayers={this.props.availablePlayers} team_id={this.props.team_id}/>
+       <DraftedPlayers/> */}
       </div>
     );
   }
@@ -29,12 +29,11 @@ class App extends Component {
 
 
 function mapStateToProps(state) {
-  return { availablePlayers: state.players.players,
-           team_id: state.team_id}
+  return { leagues: state.leagues.leagues }
 }
 
 function mapDispatchToProps(dispatch){
-    return {actions: bindActionCreators(actions, dispatch)}
+    return {actions: bindActionCreators(fetchLeagues, dispatch)}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

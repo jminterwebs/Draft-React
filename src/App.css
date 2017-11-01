@@ -84,6 +84,11 @@ table {
 	background: aqua;
 }
 
+.teamWatchList{
+	flex: 1;
+	background-color: aqua;
+}
+
 .teamMembers{
 	flex: 1;
 	width: 8%;
@@ -176,6 +181,14 @@ table {
 
 }
 
+.teamName{
+	background-color: rgba(191, 155, 25, 0.75);
+	color: #fff;
+	border: 2px solid;
+	padding: 4px;
+
+
+}
 /****************************/
 .teamPlayerInfo{
 	flex: 1;
@@ -186,6 +199,11 @@ table {
 .draftboard {
 	background-color: green;
 	display: flex
+}
+
+.formWrapper{
+	width: 700px;
+	background-color: blue;
 }
 
 input[type="text"] {

@@ -1,39 +1,52 @@
 import fetch from 'isomorphic-fetch';
-let team_id = 1;
-let round = 1;
-export const draftPlayer = (player) => {
 
-  return function(dispatch){
 
-  if (player)  {
-    return fetch(`http://localhost:3001/players/${player.id}`,{
+export const draftPlayer = (selectedPlayer, leagueInfo) => {
+
+  var drafting_spot = leagueInfo.draft_spot
+
+  var draft_team;
+  var round = leagueInfo.draft_round
+
+
+  if (drafting_spot % 10 == 0 && drafting_spot != 0){
+    draft_team = 10
+
+  } else {
+  draft_team = drafting_spot % 10
+  }
+
+  if (round % 2 == 0 ){
+      draft_team = 11 - draft_team
+  }
+
+draft_team--
+  console.log(draft_team)
+  console.log(leagueInfo.draft_spot)
+
+return function(dispatch){
+
+  if (selectedPlayer)  {
+    return fetch(`https://obscure-taiga-54498.herokuapp.com/leagues/${leagueInfo.id}`,{
           method: "PATCH",
-          body: JSON.stringify({ team_id: team_id}),
+          body: JSON.stringify({ player: selectedPlayer.id,
+                                 drafting_team: draft_team
+                                }),
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           }
       }
 
-
     )
-        .then(responseJson => {dispatch({type: 'DRAFT_PLAYER', payload: {player, team_id}})
+        .then(responseJson => {dispatch({type: 'DRAFT_PLAYER', payload: {leagueInfo, selectedPlayer, draft_team}})
       }).then(function(){
 
-        if (round == 1){
-          team_id++
-          if(team_id > 10){
-            team_id = 10
-            round = 2
-          }
-        } else if( round == 2 ){
-          team_id --
-          if(team_id < 1){
-            team_id = 1
-            round = 1
-          }
+        if (leagueInfo.draft_spot % 10 == 0 && leagueInfo.draft_spot != 0) {
+          leagueInfo.draft_round ++
         }
+        leagueInfo.draft_spot ++
       })
-    }
+
   }
-}
+}}
