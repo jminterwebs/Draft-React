@@ -10,6 +10,7 @@ ToDo:
 1. Add authentication
 2. Clean up Redux state.
 3. Add some data visualzation for players
+4. UI/UX work.
 
 
 
