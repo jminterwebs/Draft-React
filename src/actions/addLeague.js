@@ -6,7 +6,7 @@ export const createLeague = (league) => {
 
     if(league){
 
-      fetch('http://localhost:3001/leagues/', {
+      fetch('https://obscure-taiga-54498.herokuapp.com/leagues/', {
         method: "POST",
         body: JSON.stringify({
               league: {

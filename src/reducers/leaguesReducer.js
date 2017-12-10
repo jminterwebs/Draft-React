@@ -5,10 +5,8 @@ export default function leaguesReducer(state= {loading: false, leagues:[]}, acti
     case 'LOADING_LEAGUES':
       return Object.assign({}, state, {loading: true})
     case 'FETCH_LEAGUES':
-      return {loading: false, leagues: action.payload}
+      return {loading: false, leagues: action.payload.leagues}
     case 'CREATE_LEAGUE':
-
-    console.log(action.payload)
     return update(state, {leagues:{
       $push: [action.payload]
     }})

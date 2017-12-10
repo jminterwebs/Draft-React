@@ -12,7 +12,7 @@ class TeamInfo extends Component {
 
     return (
       <div className='teamMembers'>
-
+        
         <h1 className= 'teamName'>{this.props.teamInfo.name}</h1>
         {this.props.teamInfo.players.map((player)=> {
           return (
