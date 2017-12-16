@@ -16,9 +16,6 @@ componentWillMount() {
   if(this.props.leagueInfo){
     this.props.fetchLeague.fetchLeague(this.props.match.params.id)
   }
-  if(this.props.teams){
-    this.props.fetchTeams.fetchTeams(this.props.match.params.id)
-}
 
 }
 
@@ -37,14 +34,10 @@ return (
 
 function mapStateToProps(state){
   return {leagueInfo: state.league,
-          teams: state.teamInfo,
-          players: state.league
-
   }
 }
 function mapDispatchToProps(dispatch){
-  return{fetchLeague: bindActionCreators(fetchLeague, dispatch),
-         fetchTeams: bindActionCreators(fetchTeams, dispatch)}
+  return{fetchLeague: bindActionCreators(fetchLeague, dispatch)}
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(LeagueBoard)
