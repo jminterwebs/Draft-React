@@ -7,10 +7,10 @@ const Leagues = (props) => {
 
     return (
       <div>
-        
+          {console.log(props)}
         {props.leagues.map((league)=> {
           return (
-            <li><Link to={`/leagues/${league.id}`}>{league.name}</Link></li>
+            <li key={league.id}><Link to={`/leagues/${league.id}`}>{league.name}</Link></li>
           )
         })}
         <div>
