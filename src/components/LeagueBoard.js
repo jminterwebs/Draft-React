@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as fetchLeague from '../actions/fetchLeague.js'
-import * as fetchTeams from '../actions/fetchTeams.js'
 
 
 import AvailablePlayers from './AvailablePlayers'
@@ -22,10 +21,10 @@ componentWillMount() {
 render(){
 return (
 <div>
-  <AvailablePlayers leagueInfo={this.props.leagueInfo.leagueInfo}     players={this.props.players.players} currentTeam={this.props.teams}/>
+  <AvailablePlayers leagueInfo={this.props.leagueInfo.leagueInfo}/>
 
 
-  <DraftedPlayers teams={this.props.teams}/>
+  {/* <DraftedPlayers teams={this.props.teams}/> */}
 </div>
 )
 }
@@ -33,7 +32,7 @@ return (
 }
 
 function mapStateToProps(state){
-  return {leagueInfo: state.league,
+  return {leagueInfo: state.league
   }
 }
 function mapDispatchToProps(dispatch){
