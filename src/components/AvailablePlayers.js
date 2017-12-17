@@ -2,8 +2,6 @@ import React from 'react';
 import DraftPlayer from './DraftPlayer.js'
 import PlayerInfo from './PlayerInfo'
 import TeamDetails from './TeamDetails'
-import TeamWatchList from './TeamWatchList'
-
 
 
 
