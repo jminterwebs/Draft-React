@@ -29,9 +29,7 @@ import TeamWatchList from './TeamWatchList'
           <div className= "selectedPlayerInfo">
             <PlayerInfo leagueInfo={props.leagueInfo}/>
           </div>
-          <div className="teamWatchList">
-            <TeamWatchList teamInfo={props}/>
-          </div>
+
         </div>
 
       </div>
