@@ -35,9 +35,8 @@ import TeamDetails from './TeamDetails'
 
   }
 
-
-
-
-
-
 export default AvailablePlayers
+
+AvailablePlayers.defaultProps = {
+  players : []
+}
