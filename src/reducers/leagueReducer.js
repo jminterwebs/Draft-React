@@ -1,11 +1,11 @@
 import update from 'immutability-helper'
 
-export default function leagueReducer(state={loading: false, players:[], teams: [], leagueInfo: {} }, action) {
+export default function leagueReducer(state={loading: false, leagueInfo: {} }, action) {
   switch ( action.type ) {
     case 'LOADING_LEAGUE':
       return Object.assign({}, state, {loading:true})
     case 'FETCH_LEAGUE':
-      return {loading:false, players: action.payload.players, teams: action.payload.teams, leagueInfo: action.payload }
+      return {loading:false,  leagueInfo: action.payload }
     case 'DRAFT_PLAYER':
 
 
