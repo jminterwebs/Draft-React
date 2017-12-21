@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlayerDetails from './PlayerDetails'
 import DraftPlayerButton from './DraftPlayerButton'
-import AddToWatchList from './AddToWatchList'
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/draftPlayer.js'
@@ -21,7 +21,6 @@ class  PlayerInfo extends Component {
     }
 
     handleWatchPlayer(){
-
       this.props.watchPlayer.watchPlayer(this.props.selectedPlayer)
     }
 
@@ -32,7 +31,7 @@ class  PlayerInfo extends Component {
       <div className="playerInfoContainer">
       <PlayerDetails selectedPlayer={this.props.selectedPlayer}/>
       <DraftPlayerButton draftPlayer={()=>this.handleOnClick()}/>
-      <AddToWatchList watchList={()=>this.handleWatchPlayer()}/>
+
     </div>
   )
 }
