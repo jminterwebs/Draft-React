@@ -15,7 +15,7 @@ class LeagueBoard extends Component{
 
 componentWillMount() {
   if(this.props.leagueInfo){
-    
+
     this.props.fetchLeague.fetchLeague(this.props.match.params.id)
   }
 
@@ -45,6 +45,8 @@ function mapDispatchToProps(dispatch){
 export default connect(mapStateToProps,mapDispatchToProps)(LeagueBoard)
 
 LeagueBoard.defaultProps = {
-  leagueInfo: {}
+  leagueInfo: {
+    players: []
 
+  }
 }
