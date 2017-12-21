@@ -43,8 +43,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return {actions: bindActionCreators(actions,dispatch),
-          watchPlayer: bindActionCreators(watchPlayer,dispatch)}
+  return {actions: bindActionCreators(actions,dispatch)}
 }
 
 
