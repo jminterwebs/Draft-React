@@ -27,7 +27,7 @@ class LeagueNew extends Component {
                   teams_attributes: this.state.league. teams_attributes
                     }
                   });
-                  console.log(this.state.league)
+                  
  }
 
  handleTeamChange = (teamIndex) => (event)=> {

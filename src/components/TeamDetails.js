@@ -10,7 +10,7 @@ class TeamDetails extends Component {
 
    }
    handleOnClick() {
-     console.log(this.props.team_id)
+     
     }
 
 

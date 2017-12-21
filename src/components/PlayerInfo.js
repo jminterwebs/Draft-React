@@ -16,7 +16,7 @@ class  PlayerInfo extends Component {
 
    }
    handleOnClick() {
-     console.log("test")
+     
      this.props.actions.draftPlayer(this.props.selectedPlayer, this.props.leagueInfo )
     }
 
