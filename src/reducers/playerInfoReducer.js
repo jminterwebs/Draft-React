@@ -6,7 +6,7 @@ export default function  playerInfoReducer(state = {loading: false, player: {}},
     case 'SELECT_PLAYER':
       return {loading: false, player: action.playload.player}
     case 'DRAFT_PLAYER':
-      return ""
+      return {player: ""}
     default:
       return state;
       // return state.selectedPlayer
