@@ -13,7 +13,8 @@ const DraftedPlayers = props => {
     return(
       <div className='teamsWrapper'>
         {console.log(props)}
-        {props.teams.teamInfo.map((team)=>{
+
+        {props.teams.map((team)=>{
           return (
             <TeamInfo key={team.id} teamInfo={team}/>
           )
