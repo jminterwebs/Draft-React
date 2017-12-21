@@ -27,7 +27,7 @@ return (
   <AvailablePlayers leagueInfo={this.props.leagueInfo.leagueInfo} players={this.props.leagueInfo.leagueInfo.players}/>
 
 
-  {/* <DraftedPlayers teams={this.props.teams}/> */}
+  <DraftedPlayers teams={this.props.leagueInfo.leagueInfo.teams}/>
 </div>
 )
 }
