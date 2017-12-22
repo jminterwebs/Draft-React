@@ -16,8 +16,8 @@ class  PlayerInfo extends Component {
 
    }
    handleOnClick() {
-     
-     this.props.actions.draftPlayer(this.props.selectedPlayer, this.props.leagueInfo )
+
+     this.props.actions.draftPlayer(this.props.selectedPlayer.player, this.props.leagueInfo )
     }
 
     handleWatchPlayer(){
@@ -29,6 +29,7 @@ class  PlayerInfo extends Component {
     return(
 
       <div className="playerInfoContainer">
+
       <PlayerDetails selectedPlayer={this.props.selectedPlayer}/>
       <DraftPlayerButton draftPlayer={()=>this.handleOnClick()}/>
 
