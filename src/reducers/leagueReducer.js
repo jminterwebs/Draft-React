@@ -5,7 +5,7 @@ export default function leagueReducer(state={loading: false, leagueInfo: {} }, a
     case 'LOADING_LEAGUE':
       return Object.assign({}, state, {loading:true})
     case 'FETCH_LEAGUE':
-      return {loading:false,  leagueInfo: action.payload }
+      return {loading:false,  leagueInfo: action.payload.league }
     case 'DRAFT_PLAYER':
       let index = state.leagueInfo.players.findIndex(player => player.id == action.payload.selectedPlayer.id)
       let team_id = action.payload.draft_team
