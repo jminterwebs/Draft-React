@@ -6,18 +6,17 @@ export default function teamsInfoReducer( state= {loading: false, teamInfo: []},
     return Object.assign({}, state, {loading:true})
     case 'FETCH_TEAMS':
     return {loading: false, teamInfo: action.payload}
-    case 'DRAFT_PLAYER':
-    console.log(action.payload.leagueInfo)
-    console.log(action.payload.draft_team)
-    // let team_id = action.payload.draft_team
+    // case 'DRAFT_PLAYER':
     //
-    // return update(state, { teamInfo: {
-    //   [team_id]: {
-    //     players: {
-    //       $push: [action.payload.selectedPlayer]
-    //     }
-    //   }
-    // }})
+    // // let team_id = action.payload.draft_team
+    // //
+    // // return update(state, { teamInfo: {
+    // //   [team_id]: {
+    // //     players: {
+    // //       $push: [action.payload.selectedPlayer]
+    // //     }
+    // //   }
+    // // }})
 
 
     default:
