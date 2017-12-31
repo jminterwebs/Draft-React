@@ -27,13 +27,14 @@ class LeagueNew extends Component {
                   teams_attributes: this.state.league. teams_attributes
                     }
                   });
-                  
+
  }
 
  handleTeamChange = (teamIndex) => (event)=> {
    this.state.league. teams_attributes.splice(teamIndex,1, {name: event.target.value})
    var newArray = this.state.league. teams_attributes
    this.setState({league: {
+                  id: this.state.league.id,
                   name: this.state.league.name,
                   teams_attributes: newArray
    }})
@@ -44,6 +45,7 @@ class LeagueNew extends Component {
     event.preventDefault();
     this.props.createLeague(this.state.league)
     this.setState({league: {
+
                    name: this.state.league.name,
                    teams_attributes: this.state.league.teams_attributes
                  },
@@ -101,8 +103,10 @@ return (
       <input type="submit"/>
     </form>
 
-    {fireRedirect && (
-          <Redirect to={from || `/leagues/${this.props.leagues.length}`}/>
+    {console.log(this.props.leagues[this.props.leagues.length-1])}
+    {console.log(this.state)}
+   {fireRedirect && (
+          <Redirect to={from || `/leagues/${this.props.leagues[this.props.leagues.length-1].id}`}/>
         )}
 
 
