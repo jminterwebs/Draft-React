@@ -11,6 +11,7 @@ class LeagueNew extends Component {
 
     this.state = {
       league: {
+        id: "",
           name: "",
           teams_attributes: [],
       },
@@ -34,7 +35,6 @@ class LeagueNew extends Component {
    this.state.league. teams_attributes.splice(teamIndex,1, {name: event.target.value})
    var newArray = this.state.league. teams_attributes
    this.setState({league: {
-                  id: this.state.league.id,
                   name: this.state.league.name,
                   teams_attributes: newArray
    }})
@@ -49,7 +49,7 @@ class LeagueNew extends Component {
                    name: this.state.league.name,
                    teams_attributes: this.state.league.teams_attributes
                  },
-                  fireRedirect: true
+
     })
 
 
@@ -57,7 +57,7 @@ class LeagueNew extends Component {
 
 render(){
   const { from } = this.props.location.state || '/'
-    const { fireRedirect } = this.state
+
 return (
   <div class="formWrapper">
     <form  className="newLeagueForm" onSubmit={event => this.handleLeagueSubmit(event)}>
@@ -103,10 +103,10 @@ return (
       <input type="submit"/>
     </form>
 
-    {console.log(this.props.leagues[this.props.leagues.length-1])}
+    {console.log(this.props.leagues)}
     {console.log(this.state)}
-   {fireRedirect && (
-          <Redirect to={from || `/leagues/${this.props.leagues[this.props.leagues.length-1].id}`}/>
+   {this.props.leagues.fireRedirect && (
+          <Redirect to={from || `/leagues/${this.props.leagues.league_id}`}/>
         )}
 
 
@@ -118,7 +118,8 @@ return (
 
 function mapStateToProps(state){
   return {league: state.league,
-          leagues: state.leagues.leagues}
+          leagues: state.leagues
+          }
 }
 
 function mapDispatchToProps(dispatch){
