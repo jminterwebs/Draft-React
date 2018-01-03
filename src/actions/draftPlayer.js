@@ -24,7 +24,7 @@ export const draftPlayer = (selectedPlayer, leagueInfo) => {
           'Content-Type': 'application/json'
         }
       }).then(
-        console.log(`Team ${draft_team} drafted ${selectedPlayer.full_name} in spot ${leagueInfo.draft_spot} in round ${leagueInfo.draft_round}`)
+        // console.log(`Team ${draft_team} drafted ${selectedPlayer.full_name} in spot ${leagueInfo.draft_spot} in round ${leagueInfo.draft_round}`)
       ).then(res => { dispatch({type: 'DRAFT_PLAYER', payload: {selectedPlayer, leagueInfo, draft_team}})}
 
       ).then(
