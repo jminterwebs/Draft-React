@@ -4,7 +4,7 @@ export default function  playerInfoReducer(state = {loading: false, player: {}},
     case 'LOADING_PLAYER':
       return Object.assign({}, state, {loading:true})
     case 'SELECT_PLAYER':
-      console.log(action.playload)
+      console.log(action)
       return {loading: false, player: action.playload.player}
     case 'DRAFT_PLAYER':
       return {player: ""}
