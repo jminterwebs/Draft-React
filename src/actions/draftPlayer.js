@@ -14,7 +14,7 @@ export const draftPlayer = (selectedPlayer, leagueInfo) => {
 
   return function(dispatch){
     if(selectedPlayer.id){
-       return fetch(`http://localhost:3001/leagues/${leagueInfo.id}`, {
+       return fetch(`https://obscure-taiga-54498.herokuapp.com/leagues/${leagueInfo.id}`, {
         method: "PATCH",
         body: JSON.stringify({player: selectedPlayer.id,
                               drafting_team: draft_team -1
