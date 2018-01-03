@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PlayerDetails from './PlayerDetails'
 import DraftPlayerButton from './DraftPlayerButton'
-import AddToWatchList from './AddToWatchList'
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/draftPlayer.js'
@@ -16,12 +16,11 @@ class  PlayerInfo extends Component {
 
    }
    handleOnClick() {
-     console.log("test")
-     this.props.actions.draftPlayer(this.props.selectedPlayer, this.props.leagueInfo )
+
+     this.props.actions.draftPlayer(this.props.selectedPlayer.player, this.props.leagueInfo )
     }
 
     handleWatchPlayer(){
-
       this.props.watchPlayer.watchPlayer(this.props.selectedPlayer)
     }
 
@@ -30,9 +29,10 @@ class  PlayerInfo extends Component {
     return(
 
       <div className="playerInfoContainer">
+
       <PlayerDetails selectedPlayer={this.props.selectedPlayer}/>
       <DraftPlayerButton draftPlayer={()=>this.handleOnClick()}/>
-      <AddToWatchList watchList={()=>this.handleWatchPlayer()}/>
+
     </div>
   )
 }
@@ -44,8 +44,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-  return {actions: bindActionCreators(actions,dispatch),
-          watchPlayer: bindActionCreators(watchPlayer,dispatch)}
+  return {actions: bindActionCreators(actions,dispatch)}
 }
 
 

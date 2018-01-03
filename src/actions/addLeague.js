@@ -6,28 +6,31 @@ export const createLeague = (league) => {
 
     if(league){
 
-      fetch('https://obscure-taiga-54498.herokuapp.com/leagues/', {
+      fetch('http://localhost:3001/leagues/', {
         method: "POST",
+        mode: 'cors',
+        redirect: 'follow',
         body: JSON.stringify({
               league: {
                 name: league.name,
                 teams_attributes: league.teams_attributes
               }
         }),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+        headers: newLeageuHeaders
       })
-      .then( res => {dispatch({type: 'CREATE_LEAGUE', payload: {league}})})
-      .then(league => console.log(JSON.stringify(league)))
-
-
+      .then(res => Promise.all([res, res.json()]))
+      .then(([res, json]) => {
+        dispatch({type:'CREATE_LEAGUE', payload: {json}})
+        // if (res.redirected){
+        //   location.href = res.url
+        // }
+      })
+       // .then( res => {dispatch({type: 'CREATE_LEAGUE', payload: {league}})})
     }
-
-
   }
 
-
-
 }
+
+
+var newLeageuHeaders = new Headers({  'Accept': 'application/json',
+  'Content-Type': 'application/json'})

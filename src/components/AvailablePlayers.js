@@ -2,8 +2,6 @@ import React from 'react';
 import DraftPlayer from './DraftPlayer.js'
 import PlayerInfo from './PlayerInfo'
 import TeamDetails from './TeamDetails'
-import TeamWatchList from './TeamWatchList'
-
 
 
 
@@ -29,9 +27,7 @@ import TeamWatchList from './TeamWatchList'
           <div className= "selectedPlayerInfo">
             <PlayerInfo leagueInfo={props.leagueInfo}/>
           </div>
-          <div className="teamWatchList">
-            <TeamWatchList teamInfo={props}/>
-          </div>
+
         </div>
 
       </div>
@@ -39,9 +35,8 @@ import TeamWatchList from './TeamWatchList'
 
   }
 
-
-
-
-
-
 export default AvailablePlayers
+
+AvailablePlayers.defaultProps = {
+  players : []
+}

@@ -2,18 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { selectedPlayer } from '../actions/selectedPlayer'
+import { fetchPlayer } from '../actions/fetchPlayer'
 
 class DraftPlayer extends Component {
 
   selectPlayer = event => {
-    this.props.selectedPlayer(this.props.player)
+    this.props.selectedPlayer(this.props.player.id)
   }
 
   render(){
+
   return (
     <li className={this.props.player.position } onClick={this.selectPlayer}  key= {this.props.player.id} >
-      <p >{this.props.player.first_name} {this.props.player.last_name}</p>
+      <p >{this.props.player.full_name}</p>
 
     </li>
   )
@@ -26,7 +27,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
-    selectedPlayer: selectedPlayer
+    selectedPlayer: fetchPlayer
   }, dispatch)
 }
 

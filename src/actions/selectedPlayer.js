@@ -1,6 +1,6 @@
-export const selectedPlayer = (player) => {
-  return {
-    type: 'SELECT_PLAYER',
-    player
-  }
-}
+// export const selectedPlayer = (player) => {
+//   return {
+//     type: 'SELECT_PLAYER',
+//     player
+//   }
+// }

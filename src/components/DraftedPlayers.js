@@ -12,7 +12,9 @@ const DraftedPlayers = props => {
 
     return(
       <div className='teamsWrapper'>
-        {props.teams.teamInfo.map((team)=>{
+      
+
+        {props.teams.map((team)=>{
           return (
             <TeamInfo key={team.id} teamInfo={team}/>
           )
@@ -27,3 +29,7 @@ const DraftedPlayers = props => {
 
 
 export default DraftedPlayers
+
+DraftedPlayers.defaultProps = {
+  teams: []
+}

@@ -7,9 +7,12 @@ export default function leaguesReducer(state= {loading: false, leagues:[]}, acti
     case 'FETCH_LEAGUES':
       return {loading: false, leagues: action.payload.leagues}
     case 'CREATE_LEAGUE':
-    return update(state, {leagues:{
-      $push: [action.payload]
-    }})
+
+    console.log(action.payload.json.league.id)
+    return {league_id: action.payload.json.league.id, fireRedirect: true}
+    // return update(state, {leagues:{
+    //   $push: [action.payload.json.league]
+    // }})
 
     default:
     return state;
