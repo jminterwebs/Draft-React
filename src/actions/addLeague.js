@@ -8,7 +8,6 @@ export const createLeague = (league) => {
 
       fetch('https://obscure-taiga-54498.herokuapp.com/leagues/', {
         method: "POST",
-        mode: 'cors',
         redirect: 'follow',
         body: JSON.stringify({
               league: {
