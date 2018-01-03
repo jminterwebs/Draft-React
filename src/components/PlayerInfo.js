@@ -29,7 +29,7 @@ class  PlayerInfo extends Component {
     return(
 
       <div className="playerInfoContainer">
-
+        {console.log(this.props.selectedPlayer)}
       <PlayerDetails selectedPlayer={this.props.selectedPlayer}/>
       <DraftPlayerButton draftPlayer={()=>this.handleOnClick()}/>
 
