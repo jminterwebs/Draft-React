@@ -7,7 +7,6 @@ export function fetchPlayer(id) {
     mode: 'cors'
   })
     .then(res => {return res.json()})
-    .then(res => {console.log(res)})
     .then(res => {
       dispatch({type: 'SELECT_PLAYER', playload: res})
     })
