@@ -9,7 +9,7 @@ export function fetchPlayer(id) {
     .then(res => {return res.json()})
     .then(res => {console.log(res)})
     .then(responseJson => {
-      dispatch({type: 'FETCH_PLAYER', playload: responseJson})
+      dispatch({type: 'SELECT_PLAYER', playload: responseJson})
     })
 
   }
