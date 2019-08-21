@@ -1,0 +1,23 @@
+{
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "prettier.eslintIntegration": true,
+  "prettier.bracketSpacing": true,
+  "prettier.arrowParens": "avoid",
+  "prettier.jsxBracketSameLine": true,
+  "editor.fontSize": 14,
+  "window.zoomLevel": 2.5,
+  "cSpell.words": [
+    "Bitbucket",
+    "Kanban",
+    "Linkedin",
+    "Verdone",
+    "Zurb",
+    "devtools",
+    "fontawesome",
+    "fortawesome",
+    "jminterwebs",
+    "noopener",
+    "noreferrer"
+  ]
+}
