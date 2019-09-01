@@ -11,9 +11,7 @@ export default function PlayerList(props) {
   return (
     <li key={id} className={`player-item ${position}`}>
       <Label label={rank} customClass="playerRank" />
-
       <Avatar label={lastName} subLabel={firstName} initials={position} />
-
       <Label label={teamAbbr} customClass="teamAbbr" />
     </li>
   );
