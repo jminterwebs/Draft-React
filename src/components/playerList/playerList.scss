@@ -1,0 +1,87 @@
+li {
+  list-style: none;
+}
+.player-item {
+  padding: 1em 1em;
+  margin: 0.25em 0;
+  display: flex;
+  align-items: center;
+  background: #f1f1f1;
+}
+
+.playerRank {
+  flex-basis: 0;
+  flex-grow: 0.5;
+  text-align: left;
+}
+
+.teamAbbr {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.avatar {
+  flex-basis: 0;
+  flex-grow: 5;
+}
+
+.RB {
+  .avatar-initials {
+    background: green;
+  }
+}
+
+.WR {
+  .avatar-initials {
+    background: blue;
+  }
+}
+
+.TE {
+  .avatar-initials {
+    background: red;
+  }
+}
+
+.QB {
+  .avatar-initials {
+    background: darkgoldenrod;
+  }
+}
+
+.K {
+  .avatar-initials {
+    background: orange;
+  }
+}
+
+.DEF {
+  .avatar-initials {
+    background: orchid;
+  }
+}
+
+.avatar {
+  .avatar-initials {
+    color: white;
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 2.5;
+  }
+  .avatar-text {
+    padding-left: 0.5em;
+    border-left: solid 1px black;
+    margin-left: 0.35em;
+    .label-text {
+      color: black;
+      background: unset;
+      padding: unset;
+      text-align: left;
+      line-height: 1em;
+      height: unset;
+      width: unset;
+    }
+  }
+}
