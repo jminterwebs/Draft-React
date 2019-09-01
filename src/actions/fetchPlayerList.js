@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-export const fetchAvailablePlayers = () => {
-  return function(dispatch) {
+const fetchAvailablePlayers = () => {
+  return dispatch => {
     dispatch({ type: 'LOADING_PLAYERS' });
 
     return axios
@@ -26,47 +26,17 @@ export const fetchAvailablePlayers = () => {
         )
       ])
       .then(
-        axios.spread(function(
-          players1,
-          players2,
-          players3,
-          players4,
-          players5
-        ) {
-          let fullPlayerList = {
-            players: [],
-            statusText: 'OK'
+        axios.spread((players1, players2, players3, players4, players5) => {
+          const fullPlayerList = {
+            players: []
           };
 
-          players1.statusText === 'OK'
-            ? (fullPlayerList.players = fullPlayerList.players.concat(
-                players1.data.players
-              ))
-            : (fullPlayerList.statusText = 'Error');
-
-          players2.statusText === 'OK'
-            ? (fullPlayerList.players = fullPlayerList.players.concat(
-                players2.data.players
-              ))
-            : (fullPlayerList.statusText = 'Error');
-
-          players3.statusText === 'OK'
-            ? (fullPlayerList.players = fullPlayerList.players.concat(
-                players3.data.players
-              ))
-            : (fullPlayerList.statusText = 'Error');
-
-          players4.statusText === 'OK'
-            ? (fullPlayerList.players = fullPlayerList.players.concat(
-                players4.data.players
-              ))
-            : (fullPlayerList.statusText = 'Error');
-
-          players5.statusText === 'OK'
-            ? (fullPlayerList.players = fullPlayerList.players.concat(
-                players5.data.players
-              ))
-            : (fullPlayerList.statusText = 'Error');
+          fullPlayerList.players = fullPlayerList.players
+            .concat(players1.data.players)
+            .concat(players2.data.players)
+            .concat(players3.data.players)
+            .concat(players4.data.players)
+            .concat(players5.data.players);
 
           return fullPlayerList;
         })
@@ -76,3 +46,5 @@ export const fetchAvailablePlayers = () => {
       });
   };
 };
+
+export default fetchAvailablePlayers;

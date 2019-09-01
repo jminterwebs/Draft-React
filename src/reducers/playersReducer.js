@@ -5,7 +5,7 @@ export default function playerListReducer(
 ) {
   switch (action.type) {
     case 'LOADING_PLAYERS':
-      return Object.assign({}, state, { loading: true });
+      return { ...state, loading: true };
     case 'FETCH_PLAYERS':
       return { loading: false, players: action.payload.players };
     default:
