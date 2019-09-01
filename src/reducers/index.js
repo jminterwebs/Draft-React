@@ -1,16 +1,8 @@
-import { combineReducers } from 'redux'
-import leagueReducer from './leagueReducer'
-import playerInfoReducer from './playerInfoReducer'
-import leaguesReducer from './leaguesReducer'
-import teamsInfoReducer from './teamsInfoReducer'
-
+import { combineReducers } from 'redux';
+import playerListReducer from './playersReducer';
 
 const rootReducer = combineReducers({
-  league: leagueReducer,
-  selectedPlayer: playerInfoReducer,
-  leagues: leaguesReducer,
-  teamInfo: teamsInfoReducer
-})
-
+  players: playerListReducer
+});
 
 export default rootReducer;
