@@ -1,39 +1,41 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import * as fetchLeagues from './actions/fetchLeagues.js'
-import Routes from './routes/index'
-import './App.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import fetchAvailablePlayers from './actions/fetchPlayerList';
+
+import PlayerList from './components/playerList/PlayerList';
+
+import { PlayerListProvider } from './player-context';
 
 class App extends Component {
-
-  componentWillMount(){
-    if(this.props.leagues){
-      this.props.actions.fetchLeagues()
-    }
+  componentDidMount() {
+    const { props } = this;
+    props.fetchAvailablePlayers();
   }
 
-
-
   render() {
-    return (
+    const { players } = this.props;
 
-      <div className="App">
-        <Routes leagues={this.props.leagues} />
-        {/* <AvailablePlayers availablePlayers={this.props.availablePlayers} team_id={this.props.team_id}/>
-       <DraftedPlayers/> */}
-      </div>
+    return !players.loading ? (
+      <PlayerListProvider value={players}>
+        <PlayerList />
+      </PlayerListProvider>
+    ) : (
+      ''
     );
   }
 }
 
-
 function mapStateToProps(state) {
-  return { leagues: state.leagues.leagues }
+  return { players: state.players };
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    fetchAvailablePlayers: bindActionCreators(fetchAvailablePlayers, dispatch)
+  };
 }
 
-function mapDispatchToProps(dispatch){
-    return {actions: bindActionCreators(fetchLeagues, dispatch)}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
