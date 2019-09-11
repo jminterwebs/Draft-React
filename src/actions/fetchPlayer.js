@@ -6,7 +6,7 @@ const fetchPlayerInfo = playerId => {
 
     return axios
       .get(
-        `http://api.fantasy.nfl.com/v1/players/details?playerId=${playerId}&statType=seasonStatsformat=json`
+        `https://api.fantasy.nfl.com/v1/players/details?playerId=${playerId}&statType=seasonStatsformat=json`
       )
       .then(res => {
         return res.data;
