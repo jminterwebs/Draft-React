@@ -1,8 +1,15 @@
+body {
+  margin: 0;
+}
+ul {
+  padding: 0;
+  margin: 0;
+}
 li {
   list-style: none;
 }
 .player-item {
-  padding: 1em 1em;
+  padding: 1em 1em 1em 0.5em;
   margin: 0.25em 0;
   display: flex;
   align-items: center;
@@ -11,18 +18,18 @@ li {
 
 .playerRank {
   flex-basis: 0;
-  flex-grow: 0.5;
+  flex-grow: 0.75;
   text-align: left;
 }
 
 .teamAbbr {
   flex-basis: 0;
-  flex-grow: 1;
+  flex-grow: 0.5;
 }
 
 .avatar {
   flex-basis: 0;
-  flex-grow: 5;
+  flex-grow: 4;
 }
 
 .RB {

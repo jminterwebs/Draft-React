@@ -7,7 +7,7 @@ export default function playerListReducer(
     case 'LOADING_PLAYERS':
       return { ...state, loading: true };
     case 'FETCH_PLAYERS':
-      return { loading: false, players: action.payload.players };
+      return { loading: false, players: action.payload };
     default:
       return state;
   }

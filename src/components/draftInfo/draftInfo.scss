@@ -1,0 +1,51 @@
+body {
+  background: rebeccapurple;
+}
+
+.selected-player-detail {
+  margin: 1em 2em;
+}
+
+.draft-info {
+  background: white;
+  height: 250px;
+  display: flex;
+  .player-list {
+    width: 300px;
+    height: 250px;
+    overflow: scroll;
+  }
+}
+
+.details {
+  display: flex;
+  .player-details {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+.player-status {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  .player-activity {
+    flex-basis: 0%;
+    flex-grow: 1;
+  }
+}
+
+.player-ownership {
+  display: flex;
+  flex-flow: column;
+
+  .player-ownership-stat {
+    display: flex;
+    margin: 0.25em 0;
+
+    h2 {
+      flex-basis: 0;
+      flex-grow: 1;
+    }
+  }
+}

@@ -1,15 +1,20 @@
-// import fetch from 'isomorphic-fetch'
+import axios from 'axios';
 
-// export function fetchPlayer(id) {
-//   return function(dispatch){
-//   dispatch({type: 'LOADING_PLAYER'})
-//   return fetch(`https://obscure-taiga-54498.herokuapp.com/players/${id}`,{
-//     mode: 'cors'
-//   })
-//     .then(res => {return res.json()})
-//     .then(res => {
-//       dispatch({type: 'SELECT_PLAYER', playload: res})
-//     })
+const fetchPlayerInfo = playerId => {
+  return dispatch => {
+    dispatch({ type: 'LOADING_PLAYER' });
 
-//   }
-// }
+    return axios
+      .get(
+        `http://api.fantasy.nfl.com/v1/players/details?playerId=${playerId}&statType=seasonStatsformat=json`
+      )
+      .then(res => {
+        return res.data;
+      })
+      .then(res => {
+        dispatch({ type: 'FETCH_PLAYER', payload: res.players }); // API returns player detail as players
+      });
+  };
+};
+
+export default fetchPlayerInfo;

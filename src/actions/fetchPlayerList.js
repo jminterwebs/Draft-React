@@ -6,43 +6,79 @@ const fetchAvailablePlayers = () => {
 
     return axios
       .all([
+        // 0-100
         axios.get(
           'https://api.fantasy.nfl.com/v1/players/editordraftranks?count=100&format=json&offset=0'
         ),
+        // 101-200
         axios.get(
           'https://api.fantasy.nfl.com/v1/players/editordraftranks?count=100&format=json&offset=100'
         ),
+        // 201-300
         axios.get(
           'https://api.fantasy.nfl.com/v1/players/editordraftranks?count=100&format=json&offset=200'
         ),
+        // 301-400
         axios.get(
           'https://api.fantasy.nfl.com/v1/players/editordraftranks?count=100&format=json&offset=300'
         ),
+        // 401-500
         axios.get(
           'https://api.fantasy.nfl.com/v1/players/editordraftranks?count=100&format=json&offset=400'
         ),
+        // 501-600
         axios.get(
           'https://api.fantasy.nfl.com/v1/players/editordraftranks?count=100&format=json&offset=500'
+        ),
+        // research info
+        axios.get(
+          'http://api.fantasy.nfl.com/v1/players/researchinfo?format=json&count=500&sort=percentOwned'
         )
       ])
       .then(
-        axios.spread((players1, players2, players3, players4, players5) => {
-          const fullPlayerList = {
-            players: []
-          };
+        axios.spread(
+          (
+            players1,
+            players2,
+            players3,
+            players4,
+            players5,
+            players6,
+            researchinfo
+          ) => {
+            const fullPlayerList = {
+              players: []
+            };
 
-          fullPlayerList.players = fullPlayerList.players
-            .concat(players1.data.players)
-            .concat(players2.data.players)
-            .concat(players3.data.players)
-            .concat(players4.data.players)
-            .concat(players5.data.players);
+            fullPlayerList.players = fullPlayerList.players
+              .concat(players1.data.players)
+              .concat(players2.data.players)
+              .concat(players3.data.players)
+              .concat(players4.data.players)
+              .concat(players5.data.players)
+              .concat(players6.data.players);
 
-          return fullPlayerList;
-        })
+            const commonPlayers = fullPlayerList.players.map(rankedPlayer => {
+              const infoPlayer = researchinfo.data.players.find(
+                fullInfoPlayer => {
+                  return fullInfoPlayer
+                    ? fullInfoPlayer.id === rankedPlayer.id
+                    : '';
+                }
+              );
+              return [infoPlayer, rankedPlayer];
+            });
+
+            const mergedPlayers = commonPlayers.map(player => {
+              return { ...player[0], ...player[1] };
+            });
+
+            return mergedPlayers;
+          }
+        )
       )
-      .then(fullPlayerList => {
-        dispatch({ type: 'FETCH_PLAYERS', payload: fullPlayerList });
+      .then(mergedPlayers => {
+        dispatch({ type: 'FETCH_PLAYERS', payload: mergedPlayers });
       });
   };
 };
