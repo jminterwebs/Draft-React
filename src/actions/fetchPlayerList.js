@@ -32,7 +32,7 @@ const fetchAvailablePlayers = () => {
         ),
         // research info
         axios.get(
-          'http://api.fantasy.nfl.com/v1/players/researchinfo?format=json&count=500&sort=percentOwned'
+          'https://api.fantasy.nfl.com/v1/players/researchinfo?format=json&count=500&sort=percentOwned'
         )
       ])
       .then(
