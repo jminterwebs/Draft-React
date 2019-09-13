@@ -16,7 +16,7 @@ export default function PlayerNotes(props) {
                 <br />
                 {note.body} <br />
                 <br />
-                Analyis:
+                Analysis:
                 <br /> {note.analysis}
               </BodyText>
             )
