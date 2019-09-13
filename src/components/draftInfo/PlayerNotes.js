@@ -26,7 +26,7 @@ export default function PlayerNotes(props) {
     : '';
 
   return notesData ? (
-    <VerticalTabs tabsData={notesData} defaultTabIndex={0} />
+    <VerticalTabs tabsData={notesData} defaultTabIndex={0} title="Notes" />
   ) : (
     ''
   );
