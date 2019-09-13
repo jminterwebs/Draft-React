@@ -6,21 +6,23 @@ export default function PlayerNotes(props) {
   const { notes } = props;
 
   const notesData = notes
-    ? notes.map(note => {
-        return {
-          name: note.headline,
-          body: (
-            <BodyText>
-              Summary:
-              <br />
-              {note.body} <br />
-              <br />
-              Analyis:
-              <br /> {note.analysis}
-            </BodyText>
-          )
-        };
-      })
+    ? notes
+        .map(note => {
+          return {
+            name: note.headline,
+            body: (
+              <BodyText>
+                Summary:
+                <br />
+                {note.body} <br />
+                <br />
+                Analyis:
+                <br /> {note.analysis}
+              </BodyText>
+            )
+          };
+        })
+        .slice(0, 5)
     : '';
 
   return notesData ? (

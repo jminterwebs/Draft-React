@@ -4,6 +4,34 @@ body {
 
 .selected-player-detail {
   margin: 1em 2em;
+  display: flex;
+
+  .basic-player-info {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+  .player-notes {
+    flex-basis: 0;
+    flex-grow: 2.5;
+    .card-container {
+      .card {
+        box-shadow: unset;
+        margin-bottom: 0;
+        height: 200px;
+        .vertical-tabs {
+          width: 45%;
+          justify-content: unset;
+          .vertical-tab-name {
+            padding: 0.5em;
+          }
+        }
+        .vertical-active-tab-body {
+          width: 65%;
+          overflow: scroll;
+        }
+      }
+    }
+  }
 }
 
 .draft-info {
