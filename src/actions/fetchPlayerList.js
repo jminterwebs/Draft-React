@@ -73,12 +73,25 @@ const fetchAvailablePlayers = () => {
               return { ...player[0], ...player[1] };
             });
 
-            return mergedPlayers;
+            const finalPlayers = mergedPlayers.filter(player => {
+              return (
+                player.position === 'QB' ||
+                player.position === 'RB' ||
+                player.position === 'WR' ||
+                player.position === 'TE' ||
+                player.position === 'K' ||
+                player.position === 'DEF'
+              );
+            });
+            finalPlayers.map((player, index) => {
+              return (player.rank = index + 1); // eslint-disable-line no-return-assign, no-param-reassign
+            });
+            return finalPlayers;
           }
         )
       )
-      .then(mergedPlayers => {
-        dispatch({ type: 'FETCH_PLAYERS', payload: mergedPlayers });
+      .then(finalPlayers => {
+        dispatch({ type: 'FETCH_PLAYERS', payload: finalPlayers });
       });
   };
 };
