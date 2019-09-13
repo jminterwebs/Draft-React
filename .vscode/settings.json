@@ -6,6 +6,6 @@
   "prettier.arrowParens": "avoid",
   "prettier.jsxBracketSameLine": true,
   "editor.fontSize": 14,
-  "window.zoomLevel": 2.5,
+  "window.zoomLevel": 1.75,
   "cSpell.words": []
 }
