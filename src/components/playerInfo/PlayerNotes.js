@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { VerticalTabs, BodyText } from 'jmdesign';
+import { VerticalTabs, BodyText, Wrapper } from 'jmdesign';
 
 export default function PlayerNotes(props) {
   const { notes } = props;
@@ -26,7 +26,9 @@ export default function PlayerNotes(props) {
     : '';
 
   return notesData ? (
-    <VerticalTabs tabsData={notesData} defaultTabIndex={0} title="Notes" />
+    <Wrapper customClass="player-notes">
+      <VerticalTabs tabsData={notesData} defaultTabIndex={0} title="Notes" />
+    </Wrapper>
   ) : (
     ''
   );

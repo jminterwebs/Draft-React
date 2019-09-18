@@ -3,7 +3,7 @@ import React from 'react';
 import AvailablePlayers from './AvailablePlayers';
 
 import './draftInfo.scss';
-import PlayerInfo from './PlayerInfo';
+import PlayerInfo from '../playerInfo/PlayerInfo';
 
 export default function DraftInfo(props) {
   const { selectPlayer } = props;
