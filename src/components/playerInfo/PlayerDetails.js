@@ -1,50 +1,99 @@
 import React from 'react';
 
 import { Label, Title, Badge, Wrapper } from 'jmdesign';
+import PlayerDraftButton from './PlayerDraftButton';
 
 export default function PlayerDetails(props) {
-  const { expandedPlayerInfo } = props;
+  const { expandedPlayerInfo, draftPlayer } = props;
 
-  const status = expandedPlayerInfo.status === 'ACT' ? 'success' : 'danger';
+  const statusTag = expandedPlayerInfo.status === 'ACT' ? 'success' : 'danger';
 
-  const byeWeek = expandedPlayerInfo.weeks
+  const bye = expandedPlayerInfo.weeks
     ? expandedPlayerInfo.weeks.find(week => {
         return week.opponent === false;
       }).id
     : '';
 
+  const byeWeek = bye ? (
+    <Label label={`Bye: ${bye}`} customClass="player-activity" />
+  ) : (
+    ''
+  );
+
+  const {
+    name,
+    position,
+    rank,
+    status,
+    percentOwned,
+    percentStarted,
+    numAdds,
+    numDrops
+  } = expandedPlayerInfo;
+
+  const playerName = name ? <Title text={name} /> : '';
+  const playerPosition = position ? (
+    <Label customClass="player-details" label={`Position: ${position}`} />
+  ) : (
+    ''
+  );
+  const playerRank = rank ? (
+    <Label customClass="player-details" label={`Rank: ${rank}`} />
+  ) : (
+    ''
+  );
+
+  const playerPercentOwned = percentOwned ? (
+    <Label label={`Owned: ${percentOwned}%`} />
+  ) : (
+    ''
+  );
+  const playerPercentStarted = percentStarted ? (
+    <Label label={`Started: ${percentStarted}%`} />
+  ) : (
+    ''
+  );
+  const playerNumAdds = numAdds ? <Label label={`Adds: ${numAdds}`} /> : '';
+  const playerNumDrops = numDrops ? <Label label={`Drops: ${numDrops}`} /> : '';
+
+  const playerStatus = status || '';
+  const statusBadge = status ? (
+    <Badge type={statusTag} size="small" label={playerStatus} />
+  ) : (
+    ''
+  );
+
+  const playerDrafted = status ? (
+    <PlayerDraftButton
+      draftPlayer={draftPlayer}
+      playerId={expandedPlayerInfo.id}
+    />
+  ) : (
+    ''
+  );
+
   return (
     <Wrapper customClass="basic-player-info">
-      <Title text={expandedPlayerInfo.name} />
-
+      {playerName}
       <Wrapper customClass="details">
-        <Label
-          customClass="player-details"
-          label={`Position: ${expandedPlayerInfo.position}`}
-        />
-        <Label
-          customClass="player-details"
-          label={`Rank: ${expandedPlayerInfo.rank}`}
-        />
+        {playerPosition}
+        {playerRank}
       </Wrapper>
-
       <Wrapper customClass="player-status">
-        <Wrapper customClass="player-activity">
-          <Badge type={status} size="small" label={expandedPlayerInfo.status} />
-        </Wrapper>
-        <Label label={`Bye: ${byeWeek}`} customClass="player-activity" />
+        <Wrapper customClass="player-activity">{statusBadge}</Wrapper>
+        {byeWeek}
       </Wrapper>
-
       <Wrapper customClass="player-ownership">
         <Wrapper customClass="player-ownership-stat">
-          <Label label={`Owned: ${expandedPlayerInfo.percentOwned}%`} />
-          <Label label={`Started: ${expandedPlayerInfo.percentStarted}%`} />
+          {playerPercentOwned}
+          {playerPercentStarted}
         </Wrapper>
         <Wrapper customClass="player-ownership-stat">
-          <Label label={`Adds: ${expandedPlayerInfo.numAdds}%`} />
-          <Label label={`Drops: ${expandedPlayerInfo.numDrops}%`} />
+          {playerNumAdds}
+          {playerNumDrops}
         </Wrapper>
       </Wrapper>
+      {playerDrafted}
     </Wrapper>
   );
 }
