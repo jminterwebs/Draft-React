@@ -22,7 +22,7 @@ export default function PlayerNotes(props) {
             )
           };
         })
-        .slice(0, 5)
+        .slice(0, 3)
     : '';
 
   return notesData ? (
