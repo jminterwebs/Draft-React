@@ -7,7 +7,7 @@ import PlayerNotes from './PlayerNotes';
 import SelectedPlayerContext from '../../selectedPlayer-context';
 import PlayerListContext from '../../player-context';
 
-export default function PlayerInfo() {
+export default function PlayerInfo(props) {
   const selectedPlayer = useContext(SelectedPlayerContext) || '';
   const playerList = useContext(PlayerListContext);
 
@@ -17,11 +17,15 @@ export default function PlayerInfo() {
       })
     : '';
 
-  const expandedPlayerInfo = { ...selectedPlayer, ...playerListInfo };
+  const { draftPlayer } = props;
 
+  const expandedPlayerInfo = { ...selectedPlayer, ...playerListInfo };
   return (
     <Wrapper customClass="selected-player-detail">
-      <PlayerDetails expandedPlayerInfo={expandedPlayerInfo} />
+      <PlayerDetails
+        expandedPlayerInfo={expandedPlayerInfo}
+        draftPlayer={draftPlayer}
+      />
       <PlayerNotes notes={expandedPlayerInfo.notes} />
     </Wrapper>
   );
