@@ -70,7 +70,16 @@ const fetchAvailablePlayers = () => {
             });
 
             const mergedPlayers = commonPlayers.map(player => {
-              return { ...player[0], ...player[1] };
+              return {
+                ...player[0],
+                ...player[1],
+                ...{
+                  drafted: false,
+                  draftedRound: 0,
+                  draftedTeam: 0,
+                  draftedselection: 0
+                }
+              };
             });
 
             const finalPlayers = mergedPlayers.filter(player => {
@@ -80,7 +89,8 @@ const fetchAvailablePlayers = () => {
                 player.position === 'WR' ||
                 player.position === 'TE' ||
                 player.position === 'K' ||
-                player.position === 'DEF'
+                player.position === 'DEF' ||
+                player.drafted === 'false'
               );
             });
             finalPlayers.map((player, index) => {
