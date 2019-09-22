@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import fetchAvailablePlayers from './actions/fetchPlayerList';
 import fetchPlayerInfo from './actions/fetchPlayer';
+import draftPlayer from './actions/draftPlayer';
 
 import DraftInfo from './components/draftInfo/DraftInfo';
 
@@ -14,6 +15,7 @@ class App extends Component {
     super();
 
     this.handleSelectPlayer = this.handleSelectPlayer.bind(this);
+    this.handleDraftPlayer = this.handleDraftPlayer.bind(this);
   }
 
   componentDidMount() {
@@ -26,13 +28,22 @@ class App extends Component {
     props.fetchPlayerInfo(id);
   };
 
+  handleDraftPlayer = id => {
+    const { props } = this;
+
+    props.draftPlayer(id);
+  };
+
   render() {
     const { players, selectedPlayer } = this.props;
 
     return !players.loading ? (
       <PlayerListProvider value={players}>
         <SelectedPlayerProvider value={selectedPlayer}>
-          <DraftInfo selectPlayer={this.handleSelectPlayer} />
+          <DraftInfo
+            selectPlayer={this.handleSelectPlayer}
+            draftPlayer={this.handleDraftPlayer}
+          />
         </SelectedPlayerProvider>
       </PlayerListProvider>
     ) : (
@@ -50,7 +61,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     fetchAvailablePlayers: bindActionCreators(fetchAvailablePlayers, dispatch),
-    fetchPlayerInfo: bindActionCreators(fetchPlayerInfo, dispatch)
+    fetchPlayerInfo: bindActionCreators(fetchPlayerInfo, dispatch),
+    draftPlayer: bindActionCreators(draftPlayer, dispatch)
   };
 }
 
