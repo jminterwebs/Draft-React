@@ -1,0 +1,10 @@
+.drafted-board {
+  display: flex;
+  flex-flow: row;
+  .player-list {
+    width: 10%;
+    .player-item {
+      border: 1px solid black;
+    }
+  }
+}
