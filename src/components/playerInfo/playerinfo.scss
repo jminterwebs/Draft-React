@@ -1,0 +1,15 @@
+.draft-button {
+  background: lightgray;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: solid 1px, gray;
+}
+
+.draft-button:hover {
+  color: black;
+  border: solid 1px black;
+  background: white;
+}
