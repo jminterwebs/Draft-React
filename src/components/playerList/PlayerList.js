@@ -12,9 +12,13 @@ export default function PlayerList(props) {
 
   return (
     <ul className="player-list">
-      {players.map(player => {
-        return <PlayerItem player={player} selectedPlayer={selectedPlayer} />;
-      })}
+      {players
+        .filter(player => {
+          return player.drafted === false;
+        })
+        .map(player => {
+          return <PlayerItem player={player} selectedPlayer={selectedPlayer} />;
+        })}
     </ul>
   );
 }
