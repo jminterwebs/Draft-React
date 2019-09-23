@@ -20,13 +20,20 @@ export default function PlayerInfo(props) {
   const { draftPlayer } = props;
 
   const expandedPlayerInfo = { ...selectedPlayer, ...playerListInfo };
-  return (
-    <Wrapper customClass="selected-player-detail">
+
+  const playerDetails = expandedPlayerInfo.drafted ? (
+    ''
+  ) : (
+    <>
       <PlayerDetails
         expandedPlayerInfo={expandedPlayerInfo}
         draftPlayer={draftPlayer}
       />
       <PlayerNotes notes={expandedPlayerInfo.notes} />
-    </Wrapper>
+    </>
+  );
+
+  return (
+    <Wrapper customClass="selected-player-detail">{playerDetails}</Wrapper>
   );
 }
